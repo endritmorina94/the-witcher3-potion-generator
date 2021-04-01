@@ -1,19 +1,19 @@
 /* COMMON */
-body{
+body {
     font-family: serif;
+    min-width: 300px;
 }
 
 /* SFONDO */
-.background{
+.background {
     width: 100%;
     height: 100vh;
     background-color: #1c1c1c;
     background-image: url("../img/mirrored-squares.png");
-    position: relative;
 }
 
 /* BORDI */
-.app-border-1{
+.app-border-1 {
     width: 65%;
     height: 100%;
     background-color: rgba(103, 79, 44, 1);
@@ -25,7 +25,7 @@ body{
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
-.between-borders{
+.between-borders {
     width: 100%;
     height: 100%;
     padding: 0 2px;
@@ -34,7 +34,7 @@ body{
     border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.app-border-2{
+.app-border-2 {
     width: 100%;
     height: 100%;
     padding: 0 4px;
@@ -45,41 +45,46 @@ body{
 }
 
 /* CONTENT */
-.app-container{
+.app-container {
     width: 100%;
     height: 100%;
     background-color: black;
     background-image: url("../img/black-paper.png");
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     border-left: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-.app-container{
-    height: 100%;
-}
-
-.container-img{
+.container-img {
     width: 100%;
     text-align: center;
 }
 
-.container-img img{
+.container-img img {
     width: 300px;
 }
-/* #514026 */
-.titolo h1{
+
+.titolo-container {
+    flex-grow: 1;
+}
+
+.titolo {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titolo h1 {
     font-family: 'Cinzel', serif;
-    background: red;
-    background: linear-gradient(180deg, rgba(207,223,221,1) 20%, rgba(92,114,117,1) 80%);
-
-
+    background: linear-gradient(180deg, rgba(207, 223, 221, 1) 20%, rgba(92, 114, 117, 1) 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    font-size: 45px;
+    font-size: 42px;
     font-weight: 700;
     text-align: center;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.07);
@@ -87,52 +92,56 @@ body{
 }
 
 /* INGREDIENTI */
-.ingredients-list{
+.ingredients-container {
+    flex-grow: 1;
+}
+
+.ingredients-list {
     width: 100%;
     height: 430px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    overflow-y: auto;
 }
 
-.ingredient{
+.ingredient {
     width: calc(100% / 3 - 25px);
     height: 215px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.01) 65%, rgba(0,0,0,0.2) 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.01) 65%, rgba(0, 0, 0, 0.2) 100%);
     cursor: pointer;
     text-align: center;
     color: white;
     padding: 15px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.5s;
 }
 
-.ingredient:hover:not(.ingredient.active){
-    background: linear-gradient(315deg, rgba(255,255,255,0) 65%, rgba(0,0,0,0.4) 100%);
+.ingredient:hover:not(.ingredient.active) {
+    background: linear-gradient(315deg, rgba(255, 255, 255, 0) 65%, rgba(0, 0, 0, 0.4) 100%);
 }
 
-.ingredient:hover{
+.ingredient:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.ingredient:hover img{
+.ingredient img {
+    width: 70px;
+    transition: transform 0.5s;
+}
+
+.ingredient:hover img {
     transform: scale(1.2);
 }
 
-.active{
-    background: linear-gradient(90deg, rgba(130, 71, 5, 0.25) 0%, rgba(0,0,0,0) 70%);
+.active {
+    background: linear-gradient(90deg, rgba(130, 71, 5, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
     transform: scale(0.98);
 }
 
 .ingredient.active img {
     filter: drop-shadow(0 0 5px rgba(103, 79, 44, 1));
-}
-
-.ingredient img{
-    width: 70px;
-    transition: transform 0.5s;
 }
 
 .ingredient h3 {
@@ -145,39 +154,39 @@ body{
     text-align: left;
 }
 
-.counter{
+.counter {
     position: absolute;
     bottom: 15px;
     right: 15px;
 }
 
-.remove{
+.remove {
     font-size: 18px;
 }
 
-.count{
+.count {
     font-size: 16px;
 }
 
-input{
+input {
     display: none;
 }
 
 .ingredient.active .remove:hover,
 .ingredient.active .add:hover,
 .ingredient.active .count,
-.ingredient.active h3{
+.ingredient.active h3 {
     color: #aa6f19;
 }
 
 /* BOTTONE CREA */
-.button-container{
+.button-container {
     width: 100%;
     text-align: center;
     margin-top: 20px;
 }
 
-.my-button{
+.my-button {
     margin: 0 auto 30px;
     background-color: rgba(46, 30, 14, 0.2);
     background-image: url("../img/mirrored-squares.png");
@@ -195,21 +204,21 @@ input{
     transition: background-color 0.5s, color 0.5s;
 }
 
-.my-button:hover{
+.my-button:hover {
     background-color: rgba(46, 30, 14, 0.8);
     color: white;
 }
 
-.my-button:active{
+.my-button:active {
     transform: scale(0.98);
 }
 
-.my-button:focus{
+.my-button:focus {
     outline: 0;
 }
 
 /* Overlay */
-#overlay{
+#overlay {
     width: 100%;
     height: 100vh;
     position: absolute;
@@ -219,12 +228,12 @@ input{
     display: none;
 }
 
-.appear{
+.appear {
     display: block;
 }
 
 /* Finestra Modale */
-#modal-window-border-1{
+#modal-window-border-1 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -241,7 +250,7 @@ input{
     display: none;
 }
 
-.modal-window{
+.modal-window {
     width: 100%;
     height: 100%;
     background-color: black;
@@ -257,20 +266,94 @@ input{
     overflow: hidden;
 }
 
-#potion{
+#potion {
     color: #a88757;
 }
 
-.modal-window img{
+.modal-window img {
     width: 100px;
     filter: drop-shadow(0 0 5px rgba(103, 79, 44, 1));
     margin-top: 8px;
 }
 
-.modal-window h2{
+.modal-window h2 {
     padding-top: 5px;
 }
 
-.modal-window p{
+.modal-window p {
     text-align: center;
+}
+
+/* RESPONSIVE SECTION */
+@media all and (max-width: 1369px) {
+    .ingredient {
+        width: calc(100% / 2 - 37.5px);
+    }
+}
+
+@media all and (max-width: 967px) {
+    .app-border-1 {
+        width: 80%
+    }
+
+    .ingredient {
+        height: auto;
+    }
+
+    .counter {
+        bottom: 7px;
+    }
+
+    #modal-window-border-1 {
+        width: 60%;
+    }
+}
+
+@media all and (max-width: 767px) {
+    .ingredient {
+        width: calc(100% / 2);
+    }
+
+    #modal-window-border-1 {
+        height: auto;
+    }
+
+    .modal-window h2 {
+        font-size: 29px;
+    }
+}
+
+@media all and (max-width: 575px) {
+    .app-border-1 {
+        width: 100%;
+    }
+
+    .container-img img {
+        width: 210px;
+    }
+
+    .titolo h1 {
+        font-size: 33px;
+    }
+
+    .ingredients-list {
+        height: 68vh;
+    }
+
+    .ingredient {
+        width: calc(100% - 30px);
+    }
+
+    #my-btn {
+        margin: 0;
+    }
+
+    #modal-window-border-1 {
+        width: 100%;
+        min-width: 300px;
+    }
+
+    .modal-window h2 {
+        font-size: 24px;
+    }
 }
