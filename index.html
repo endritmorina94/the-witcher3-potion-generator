@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+
+        <!-- Sfondo -->
+        <div class="background">
+
+            <!-- Bordo esterno -->
+            <div class="app-border-1">
+
+                <!-- Spazio tra i bordi -->
+                <div class="between-borders">
+
+                    <!-- Bordo interno -->
+                    <div class="app-border-2">
+
+                        <!-- Contenitore WebApp -->
+                        <div class="app-container">
+
+                            <!-- Logo -->
+                            <div class="container-img">
+                                <img src="img/logo.png" alt="logo">
+                            </div>
+
+                            <!-- Titolo -->
+                            <div class="titolo">
+                                <h1>Potion Generator</h1>
+                            </div>
+
+                            <!-- Contenitore Ingredienti -->
+                            <div class="ingredients-container">
+
+                                <div class="ingredients-list">
+
+                                    <!-- Singolo Ingrediente -->
+                                    <div class="ingredient">
+
+                                        <img src="img/etere.png" alt="etere">
+
+                                        <h3>Etere</h3>
+
+                                        <p>L'etere, di colore viola, si trova in molti ingredienti, fra cui erbe, minerali e parti del corpo dei mostri.</p>
+
+                                        <div class="counter">
+                                            <span id="remove">-</span>
+                                            <span id="count">0</span>
+                                            <span id="add">+</span>
+                                        </div>
+
+                                        <input id="viola" value="viola" type="checkbox">
+
+                                    </div>
+
+                                    <!-- Singolo Ingrediente -->
+                                    <div class="ingredient">
+
+                                        <img src="img/hydragenum.png" alt="hydragenum">
+
+                                        <h3>Hydragenum</h3>
+
+                                        <p>L'hydragenum, di colore argento, si trova in molti ingredieni, fra cui erbe, minerali e parti del corpo dei mostri.</p>
+
+                                        <div class="counter">
+                                            <span id="remove">-</span>
+                                            <span id="count">0</span>
+                                            <span id="add">+</span>
+                                        </div>
+
+                                        <input id="argento" value="argento" type="checkbox">
+
+                                    </div>
+
+                                    <!-- Singolo Ingrediente -->
+                                    <div class="ingredient">
+
+                                        <img src="img/zolfo.png" alt="zolfo">
+
+                                        <h3>Zolfo</h3>
+
+                                        <p>Lo zolfo, di colore giallo, si trova in molti ingredienti, fra cui erbe, minerali e parti del corpo dei mostri.</p>
+
+                                        <div class="counter">
+                                            <span id="remove">-</span>
+                                            <span id="count">0</span>
+                                            <span id="add">+</span>
+                                        </div>
+
+                                        <input id="giallo" value="giallo" type="checkbox">
+
+                                    </div>
+
+                                    <!-- Singolo Ingrediente -->
+                                    <div class="ingredient">
+
+                                        <img src="img/rebis.png" alt="rebis">
+
+                                        <h3>Rebis</h3>
+
+                                        <p>Il rebis, di colore verde, si trova in molti ingredienti, fra cui erbe, minerali e parti del corpo dei mostri.</p>
+
+                                        <div class="counter">
+                                            <span id="remove">-</span>
+                                            <span id="count">0</span>
+                                            <span id="add">+</span>
+                                        </div>
+
+                                        <input id="verde" value="verde" type="checkbox">
+
+                                    </div>
+
+                                    <!-- Singolo Ingrediente -->
+                                    <div class="ingredient">
+
+                                        <img src="img/vermiglio.png" alt="vermiglio">
+
+                                        <h3>Vermiglio</h3>
+
+                                        <p>Il vermiglio, di colore arancione, si trova in molti ingredienti, fra cui erbe, minerali e parti del corpo dei mostri.</p>
+
+                                        <div class="counter">
+                                            <span id="remove">-</span>
+                                            <span id="count">0</span>
+                                            <span id="add">+</span>
+                                        </div>
+
+                                        <input id="arancione" value="arancione" type="checkbox">
+
+                                    </div>
+
+                                    <!-- Singolo Ingrediente -->
+                                    <div class="ingredient">
+
+                                        <img src="img/vetriolo.png" alt="vetriolo">
+
+                                        <h3>Vetriolo</h3>
+
+                                        <p>Il vetriolo, di colore blu, si trova in molti ingredienti, fra cui erbe, minerali e parti del corpo dei mostri.</p>
+
+                                        <div class="counter">
+                                            <span id="remove">-</span>
+                                            <span id="count">0</span>
+                                            <span id="add">+</span>
+                                        </div>
+
+                                        <input id="blu" value="blu" type="checkbox">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!-- Fine Contenitore Ingredienti -->
+
+                            <!-- Bottone CREA -->
+                            <div class="button-container">
+                                <div id="my-btn">
+                                    CREA
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Fine Contenitore WebApp -->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    <script src="js/script.js" charset="utf-8"></script>
+    </body>
+</html>
