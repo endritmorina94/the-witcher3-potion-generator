@@ -134,11 +134,11 @@
     right: 15px;
 }
 
-#remove{
+.remove{
     font-size: 18px;
 }
 
-#count{
+.count{
     font-size: 16px;
 }
 
@@ -146,9 +146,9 @@ input{
     display: none;
 }
 
-.ingredient.active #remove:hover,
-.ingredient.active #add:hover,
-.ingredient.active #count{
+.ingredient.active .remove:hover,
+.ingredient.active .add:hover,
+.ingredient.active .count{
     color: #aa6f19;
 }
 
