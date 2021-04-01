@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title></title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -32,7 +33,7 @@
 
                             <!-- Titolo -->
                             <div class="titolo">
-                                <h1>Potion Generator</h1>
+                                <h1>Alchemist</h1>
                             </div>
 
                             <!-- Contenitore Ingredienti -->
@@ -161,9 +162,9 @@
 
                             <!-- Bottone CREA -->
                             <div class="button-container">
-                                <div id="my-btn">
+                                <button id="my-btn" class="my-button">
                                     CREA
-                                </div>
+                                </button>
                             </div>
 
                         </div>
@@ -175,6 +176,28 @@
             </div>
 
         </div>
+
+        <!-- Overlay -->
+        <div id="overlay"></div>
+
+        <!-- Finestra Modale -->
+        <div id="modal-window-border-1">
+           <div class="between-borders">
+               <div class="app-border-2">
+                   <div class="modal-window">
+
+                       <img src="img/miele-bianco.png" alt="miele bianco">
+
+                       <h2>Hai creato <span id="potion">Miele Bianco</span></h2>
+
+                       <p>Il Miele Bianco stimola notevolmente la produzione di enzimi purificatori nei corpi mutati dei witcher. Così facendo, aiuta a rimuovere le tossine delle pozioni, annullando però al tempo stesso anche i loro effetti benefici.</p>
+
+                       <button id="cancel-btn" class="my-button" type="button" name="button">CONTINUA</button>
+                   </div>
+               </div>
+           </div>
+        </div>
+
 
     <script src="js/script.js" charset="utf-8"></script>
     </body>
