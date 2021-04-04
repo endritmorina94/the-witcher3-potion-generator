@@ -1,40 +1,153 @@
+// AVVERTENZE: QUESTO CODICE CONTIENE BUG!
+
+//Dichiaro le variabili di tutti gl'elementi di base
 var userTry = [];
 var arrayPozioniScoperte = [];
 var btnCrea = document.getElementById("my-btn");
 var cancelBtn = document.getElementById("cancel-btn");
 var overlay = document.getElementById("overlay");
 var modal = document.getElementById("modal-window-border-1");
-
-
 var ingredients = document.querySelectorAll(".ingredient");
+var inputs = document.getElementsByClassName("numberOfIngredients");
 
-    for (var i = 0; i < ingredients.length; i++) {
+//Faccio apparire all'avvio un messaggio di benvenuto
+document.getElementById("bodyy").addEventListener("load", myFunction());
 
-        ingredients[i].addEventListener("click", function(){
+function myFunction() {
+    overlay.classList.remove("hide");
+    modal.classList.remove("hide");
+}
 
-            this.classList.toggle("active");
+
+//Creo un ciclo per togglare la classe active agli ingredienti..
+for (var i = 0; i < ingredients.length; i++) {
+
+    //Dichiaro una somma base di 0
+    var sommaIngredienti = 0;
+
+    ingredients[i].addEventListener("click",
+        function() {
+
+            //Finché la somma degli ingredienti è inferiore di 5..
+            if (sommaIngredienti < 5) {
+
+                this.classList.toggle("active");
+
+                var act = this.classList.contains("active");
+
+                //Se l'ingrediente è selezionato e quindi possiede la classe active..
+                if (act) {
+
+                    var incBtn = this.getElementsByClassName("inc");
+                    var decBtn = this.getElementsByClassName("dec");
+                    var input = this.getElementsByClassName("numberOfIngredients");
+
+                    var numbInput = 1;
+                    input[0].value = numbInput;
+
+                    sommaIngredienti++;
+
+                    console.log(sommaIngredienti);
+
+                    incBtn[0].addEventListener("click",
+                        function() {
+                            //tiene traccia anche della somma tra le varie carte in modo da non eccedere oltre 5 totali
+                            if (sommaIngredienti < 5 && numbInput < 3) {
+
+                                sommaIngredienti++;
+
+                                console.log("somma ingredienti", sommaIngredienti);
+
+                                if (numbInput < 3) {
+
+                                    numbInput++;
+
+                                    input[0].value = numbInput;
+                                }
+                            }
+                        });
+
+                    decBtn[0].addEventListener("click",
+                        function() {
+
+                            if (numbInput > 0) {
+
+                                numbInput--;
+
+                                sommaIngredienti--;
+
+                                console.log("somma ingre", sommaIngredienti);
+                                input[0].value = numbInput;
+
+                            }
+                            console.log("val input: ", parseInt(input[0].value.slice(0, 1).toString()));
+                        });
+                    //Se riclicchiamo sull'ingrediente, viene resettata la sua quantità e viene sottrata alla somma totale degli ingredienti
+                } else {
+
+                    var input = this.getElementsByClassName("numberOfIngredients");
+
+                    console.log("RESET-top", sommaIngredienti + " - " + parseInt(input[0].value.slice(0, 1).toString()));
+
+                    sommaIngredienti--;
+                    sommaIngredienti = sommaIngredienti - parseInt(input[0].value.slice(0, 1).toString());
+                    numbInput = 0;
+
+                    input[0].value = 0;
+
+                    console.log("RESET", sommaIngredienti + " - " + parseInt(input[0].value.slice(0, 1).toString()));
+                    console.log(numbInput);
+
+                }
+
+            }
+            // else {
+            //     this.classList.remove("active");
+            //
+            //     var input = this.getElementsByClassName("numberOfIngredients");
+            //
+            //     sommaIngredienti = sommaIngredienti - parseInt(input[0].value.slice(0, 1).toString());
+            //     contatore = 0;
+            //
+            //     input[0].value = "0";
+            //
+            //     console.log("sommabottom: ", sommaIngredienti);
+            // }
+
+
 
         });
 
-    }
+}
 
 
 
 
-cancelBtn.addEventListener("click", function () {
+//Premendo il bottone Continua tutto viene resettato
+cancelBtn.addEventListener("click", function() {
+    //Aggiungo la classe hide alla modale e all'overlay
     overlay.classList.add("hide");
     modal.classList.add("hide");
-    location.reload();
-    //da rivedere, soluzione temporanea
+
+    //Tolgo la classe active agli ingredienti
+    for (var i = 0; i < ingredients.length; i++) {
+        ingredients[i].classList.remove("active");
+    }
+
+    //Imposto la quantità degli ingredienti a 0
+    for (var g = 0; g < inputs.length; g++) {
+        inputs[g].value = 0;
+    }
+
+    //Reimposto a 0 la somma degli ingredienti
+    sommaIngredienti = 0;
+
 });
-
-
 
 // Impedisco al div counter di prorogare il click anche al div padre
 function func1(event) {
     event.stopPropagation();
 }
-
 
 /*
 - event listener sul bottone:
@@ -44,7 +157,7 @@ function func1(event) {
 - se il numero di ingredienti inseriti è < 3 allora pop up che sollecita ad inserire il giusto minimo
 */
 btnCrea.addEventListener("click",
-    function(){
+    function() {
 
         var cardsToIterate = document.getElementsByClassName("numberOfIngredients");
         for (let h = 0; h < cardsToIterate.length; h++) {
@@ -82,7 +195,7 @@ btnCrea.addEventListener("click",
   (non ci sono due ricette con gli stessi ingredienti, se la prima ricetta è quella giusta non ha senso continuare ad iterare)
 */
 
-
+//Determino un array con tutte le pozioni esatte
 let pozioniEsatte = [
     {
         "nome": "Rampicante",
@@ -166,7 +279,13 @@ let pozioniEsatte = [
     }
 ];
 
+//Imposto delle frasi standard
+var text1 = "Hai creato: ";
+var text2 = " stimola notevolmente la produzione di enzimi purificatori nei corpi mutati dei witcher. Così facendo, aiuta a rimuovere le tossine delle pozioni, annullando però al tempo stesso anche i loro effetti benefici.";
+var text3 = "Ricetta sbagliata";
+var text4 = "Hai erronamente creato uno stimolante per pantegane che ti attaccano sbranandoti senza pietà."
 
+//Confronto gl'elementi selezionati dall'utente con quelli delle possibili soluzioni corrette
 function confronto(pozioniEsatte, userTry) {
     var arr;
     var confronto = true;
@@ -184,21 +303,36 @@ function confronto(pozioniEsatte, userTry) {
                 break; // è inutile continuare a farlo iterare
             }
         }
+
+        //variabili interne del MODALE
+        var modPotion = document.getElementById("modale-potion");
+        var modText = document.getElementById("modale-text");
+        //In caso di trovata corrispondenza...
         if (confronto) {
             console.log("complimenti, hai creato " + element.nome);
             arrayPozioniScoperte.push(element);
-            //variabili interne del MODALE
-            var modPotion = document.getElementById("modale-potion");
-            var modText = document.getElementById("modale-text");
+
 
             document.getElementById("modale-img").src = element.aspetto;
-            modPotion.innerHTML = element.nome;
-            modText.innerHTML = element.nome;
+            modPotion.innerHTML = text1 + element.nome;
+            modText.innerHTML = element.nome + text2;
 
 
             overlay.classList.remove("hide");
             modal.classList.remove("hide");
             break; // perchè se la pozione l'hai creata non c'è bisogno di continuare ad iterare alla ricerca della pozione giusta
+
+        //In caso di mancata corrispondenza..
+        } else {
+
+            document.getElementById("modale-img").src = "img/rat.png";
+            document.getElementById("modale-img").style.width = "180px";
+            modPotion.innerHTML = text3;
+            modText.innerHTML = text4;
+
+            overlay.classList.remove("hide");
+            modal.classList.remove("hide");
+
         }
     }
 }
@@ -210,72 +344,12 @@ for (let j = 0; j < cardBox.length; j++) {
     //a questo va aggiunto l'event listener
     const element = cardBox[j];
     element.addEventListener("click",
-        function(){
+        function() {
             //che cambia lo status di questo
             var idbtn = document.getElementById(element.getAttribute("for"));
             idbtn.checked = true;
         }
     );
-}
-
-
-// può essere max 5 tra tutti gli ingredienti
-var sommaIngredienti = 0;
-/*
-- clicclando sul bottone - decrementa il numero di ingredienti
-- non si può scendere sotto lo zero
-- viene anche decrementata la somma comune a tutti gli ingredienti
-*/
-var decBtns = document.getElementsByClassName("dec");
-for (let k = 0; k < decBtns.length; k++) {
-    const element = decBtns[k];
-    var n = document.getElementById("number-" + element.getAttribute("value"));
-    element.addEventListener("click",
-        function(){
-
-            var n = document.getElementById("number-" + element.getAttribute("value"));
-            var toDecrease = n.value;
-            if (toDecrease > 0) {
-                toDecrease--;
-                sommaIngredienti--;
-                console.log(sommaIngredienti)
-            }
-            n.value = toDecrease;
-        }
-    );
-}
-
-
-/*
-- cliccando sul bottone + incrementa il numero di ingredienti
-- non si può andare oltre 3 ingredienti per tipo
-- la somma di due o piu ingredienti non può essere superiore a 5
- */
-var incrBtns = document.getElementsByClassName("inc");
-for (let y = 0; y < incrBtns.length; y++) {
-    const element = incrBtns[y];
-    var m = document.getElementById("number-" + element.getAttribute("value"));
-
-
-
-    element.addEventListener("click",
-        function () {
-            var m = document.getElementById("number-" + element.getAttribute("value"));
-            var toIncrease = m.value;
-            //tiene traccia anche della somma tra le varie carte in modo da non eccedere oltre 5 totali
-            if (sommaIngredienti < 5 && toIncrease < 3) {
-                sommaIngredienti++;
-                console.log("somma ingredienti", sommaIngredienti);
-                if (toIncrease < 3) {
-                    toIncrease++;
-                }
-            }
-            m.value = toIncrease;
-        }
-    );
-
-
-
 }
 
 /* disabilità la possibilita di cliccare nell'input numerico */
