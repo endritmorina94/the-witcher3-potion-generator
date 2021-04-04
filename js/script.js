@@ -142,6 +142,9 @@ cancelBtn.addEventListener("click", function() {
     //Reimposto a 0 la somma degli ingredienti
     sommaIngredienti = 0;
 
+    //Resetto anche l'array degli ingredienti scelti dall'utente
+    userTry = [];
+
 });
 
 // Impedisco al div counter di prorogare il click anche al div padre
@@ -314,6 +317,8 @@ function confronto(pozioniEsatte, userTry) {
 
 
             document.getElementById("modale-img").src = element.aspetto;
+            document.getElementById("modale-img").style.width = "85px";
+
             modPotion.innerHTML = text1 + element.nome;
             modText.innerHTML = element.nome + text2;
 
@@ -323,7 +328,8 @@ function confronto(pozioniEsatte, userTry) {
             break; // perchè se la pozione l'hai creata non c'è bisogno di continuare ad iterare alla ricerca della pozione giusta
 
         //In caso di mancata corrispondenza..
-        } else {
+        }
+         else {
 
             document.getElementById("modale-img").src = "img/rat.png";
             document.getElementById("modale-img").style.width = "180px";

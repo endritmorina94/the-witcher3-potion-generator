@@ -115,7 +115,6 @@ body {
     text-align: center;
     color: white;
     padding: 15px;
-    position: relative;
     overflow: hidden;
     transition: .3s;
 }
@@ -166,9 +165,9 @@ body {
 }
 
 .counter {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
+    position: relative;
+    bottom: 20px;
+    left: calc(100% - 50px);
 }
 
 .remove {
