@@ -1,6 +1,6 @@
 # The Alchemist - The Witcher's potion generator
 
-## Some Previews  
+## Previews  
 ![Preview](/img/preview.png "preview")
 
 
