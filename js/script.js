@@ -18,110 +18,61 @@ function myFunction() {
     modal.classList.remove("hide");
 }
 
+// può essere max 5 tra tutti gli ingredienti
+var sommaIngredienti = 0;
+/*
+- clicclando sul bottone - decrementa il numero di ingredienti
+- non si può scendere sotto lo zero
+- viene anche decrementata la somma comune a tutti gli ingredienti
+*/
+var decBtns = document.getElementsByClassName("dec");
+for (let k = 0; k < decBtns.length; k++) {
+    const element = decBtns[k];
+    var n = document.getElementById("number-" + element.getAttribute("value"));
+    element.addEventListener("click",
+        function(){
 
-//Creo un ciclo per togglare la classe active agli ingredienti..
-for (var i = 0; i < ingredients.length; i++) {
-
-    //Dichiaro una somma base di 0
-    var sommaIngredienti = 0;
-
-    ingredients[i].addEventListener("click",
-        function() {
-
-            //Finché la somma degli ingredienti è inferiore di 5..
-            if (sommaIngredienti < 5) {
-
-                this.classList.toggle("active");
-
-                var act = this.classList.contains("active");
-
-                //Se l'ingrediente è selezionato e quindi possiede la classe active..
-                if (act) {
-
-                    var incBtn = this.getElementsByClassName("inc");
-                    var decBtn = this.getElementsByClassName("dec");
-                    var input = this.getElementsByClassName("numberOfIngredients");
-
-                    var numbInput = 1;
-                    input[0].value = numbInput;
-
-                    sommaIngredienti++;
-
-                    console.log(sommaIngredienti);
-
-                    incBtn[0].addEventListener("click",
-                        function() {
-                            //tiene traccia anche della somma tra le varie carte in modo da non eccedere oltre 5 totali
-                            if (sommaIngredienti < 5 && numbInput < 3) {
-
-                                sommaIngredienti++;
-
-                                console.log("somma ingredienti", sommaIngredienti);
-
-                                if (numbInput < 3) {
-
-                                    numbInput++;
-
-                                    input[0].value = numbInput;
-                                }
-                            }
-                        });
-
-                    decBtn[0].addEventListener("click",
-                        function() {
-
-                            if (numbInput > 0) {
-
-                                numbInput--;
-
-                                sommaIngredienti--;
-
-                                console.log("somma ingre", sommaIngredienti);
-                                input[0].value = numbInput;
-
-                            }
-                            console.log("val input: ", parseInt(input[0].value.slice(0, 1).toString()));
-                        });
-                    //Se riclicchiamo sull'ingrediente, viene resettata la sua quantità e viene sottrata alla somma totale degli ingredienti
-                } else {
-
-                    var input = this.getElementsByClassName("numberOfIngredients");
-
-                    console.log("RESET-top", sommaIngredienti + " - " + parseInt(input[0].value.slice(0, 1).toString()));
-
-                    sommaIngredienti--;
-                    sommaIngredienti = sommaIngredienti - parseInt(input[0].value.slice(0, 1).toString());
-                    numbInput = 0;
-
-                    input[0].value = 0;
-
-                    console.log("RESET", sommaIngredienti + " - " + parseInt(input[0].value.slice(0, 1).toString()));
-                    console.log(numbInput);
-
-                }
-
+            var n = document.getElementById("number-" + element.getAttribute("value"));
+            var toDecrease = n.value;
+            if (toDecrease > 0) {
+                toDecrease--;
+                sommaIngredienti--;
+                console.log(sommaIngredienti)
             }
-            // else {
-            //     this.classList.remove("active");
-            //
-            //     var input = this.getElementsByClassName("numberOfIngredients");
-            //
-            //     sommaIngredienti = sommaIngredienti - parseInt(input[0].value.slice(0, 1).toString());
-            //     contatore = 0;
-            //
-            //     input[0].value = "0";
-            //
-            //     console.log("sommabottom: ", sommaIngredienti);
-            // }
-
-
-
-        });
-
+            n.value = toDecrease;
+        }
+    );
 }
 
+/*
+- cliccando sul bottone + incrementa il numero di ingredienti
+- non si può andare oltre 3 ingredienti per tipo
+- la somma di due o piu ingredienti non può essere superiore a 5
+ */
+var incrBtns = document.getElementsByClassName("inc");
+for (let y = 0; y < incrBtns.length; y++) {
+    const element = incrBtns[y];
+    var m = document.getElementById("number-" + element.getAttribute("value"));
 
 
+
+    element.addEventListener("click",
+        function () {
+            var m = document.getElementById("number-" + element.getAttribute("value"));
+            var toIncrease = m.value;
+            //tiene traccia anche della somma tra le varie carte in modo da non eccedere oltre 5 totali
+            if (sommaIngredienti < 5 && toIncrease < 3) {
+                sommaIngredienti++;
+                console.log("somma ingredienti", sommaIngredienti);
+                if (toIncrease < 3) {
+                    toIncrease++;
+                }
+            }
+            m.value = toIncrease;
+        }
+    );
+
+}
 
 //Premendo il bottone Continua tutto viene resettato
 cancelBtn.addEventListener("click", function() {

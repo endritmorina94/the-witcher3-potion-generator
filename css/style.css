@@ -129,17 +129,17 @@ body {
 }
 
 .ingredient:hover:not(.ingredient.active) {
-    background: linear-gradient(315deg, rgba(255, 255, 255, 0) 65%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(90deg, rgba(130, 71, 5, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
 }
 
 .ingredient:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.active {
+/* .active {
     background: linear-gradient(90deg, rgba(130, 71, 5, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
     transform: scale(0.98);
-}
+} */
 
 .ingredient img {
     width: 50px;
@@ -327,10 +327,7 @@ margin: 0;
 input[type=number] {
 -moz-appearance: textfield;
 }
-
 /* ----- FINE CSS NICO ----- */
-
-
 
 /* RESPONSIVE SECTION */
 @media all and (max-width: 1369px) {
