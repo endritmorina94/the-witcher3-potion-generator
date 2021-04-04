@@ -4,4 +4,4 @@
 ![Preview](/img/preview.png "preview")
 
 
-![Preview 2](/img/jpreview.png2 "preview 2")
+![Preview 2](/img/jpreview2.png "preview 2")
